@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LinkBridge TV</string>
+    <string name="waiting">Waiting…</string>
+    <string name="last_received">Last received: %1$d seconds ago</string>
+    <string name="copied">Copied</string>
+    <string name="cleared">History cleared</string>
+    <string name="deleted">Deleted</string>
+    <string name="exported">Exported to Downloads/LinkBridge/</string>
+    <string name="no_ip">No IP address found</string>
+    <string name="confirm_clear">Clear all history?</string>
+    <string name="confirm_delete">Delete this item?</string>
+</resources>

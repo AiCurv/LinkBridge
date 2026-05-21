@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#1A1A2E">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send to TV"
+        android:textColor="#ECEFF1"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Preview -->
+    <TextView
+        android:id="@+id/tvPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#B0BEC5"
+        android:textSize="14sp"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:background="#2A2A3E"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Available TVs -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available TVs"
+        android:textColor="#90A4AE"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <Spinner
+        android:id="@+id/spinnerTvs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#2A2A3E"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Manual IP entry -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TV IP Address"
+        android:textColor="#90A4AE"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <EditText
+            android:id="@+id/etManualIp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="3"
+            android:hint="192.168.1.50"
+            android:textColorHint="#546E7A"
+            android:textColor="#ECEFF1"
+            android:background="#2A2A3E"
+            android:paddingStart="12dp"
+            android:paddingEnd="8dp"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/etManualPort"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dp"
+            android:hint="9090"
+            android:textColorHint="#546E7A"
+            android:textColor="#ECEFF1"
+            android:background="#2A2A3E"
+            android:paddingStart="8dp"
+            android:paddingEnd="12dp"
+            android:inputType="number"
+            android:singleLine="true"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- Status -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#7C4DFF"
+        android:textSize="14sp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Progress -->
+    <ProgressBar
+        android:id="@+id/progressSending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/btnRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Retry"
+            android:textColor="#ECEFF1"
+            android:backgroundTint="#FF9800"
+            android:visibility="gone"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Send"
+            android:textColor="#ECEFF1"
+            android:backgroundTint="#7C4DFF" />
+
+    </LinearLayout>
+
+    <!-- Recent sends -->
+    <TextView
+        android:id="@+id/tvRecentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent sends (tap to resend)"
+        android:textColor="#90A4AE"
+        android:textSize="13sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/recentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+</LinearLayout>

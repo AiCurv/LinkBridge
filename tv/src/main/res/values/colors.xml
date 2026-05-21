@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#0D0D1A</color>
+    <color name="bg_status_bar">#141428</color>
+    <color name="text_primary">#ECEFF1</color>
+    <color name="text_secondary">#90A4AE</color>
+    <color name="text_hint">#546E7A</color>
+    <color name="accent">#7C4DFF</color>
+    <color name="accent_light">#B388FF</color>
+
+    <!-- Category chip colors -->
+    <color name="chip_web">#4CAF50</color>
+    <color name="chip_magnet">#FF9800</color>
+    <color name="chip_video">#F44336</color>
+    <color name="chip_torrent">#FF5722</color>
+    <color name="chip_text">#607D8B</color>
+    <color name="danger">#FF5252</color>
+</resources>

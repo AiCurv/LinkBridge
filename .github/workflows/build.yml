@@ -1,0 +1,87 @@
+name: Build LinkBridge APKs
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build TV APK (debug)
+        run: ./gradlew :tv:assembleDebug
+
+      - name: Build Phone APK (debug)
+        run: ./gradlew :phone:assembleDebug
+
+      - name: Build TV APK (release)
+        run: ./gradlew :tv:assembleRelease
+
+      - name: Build Phone APK (release)
+        run: ./gradlew :phone:assembleRelease
+
+      - name: Rename APKs
+        run: |
+          cp tv/build/outputs/apk/debug/tv-debug.apk linkbridge-tv-armeabi-v7a-debug.apk || true
+          cp tv/build/outputs/apk/release/tv-release-unsigned.apk linkbridge-tv-armeabi-v7a.apk || true
+          cp phone/build/outputs/apk/debug/phone-debug.apk linkbridge-phone-armeabi-v7a-debug.apk || true
+          cp phone/build/outputs/apk/release/phone-release-unsigned.apk linkbridge-phone-armeabi-v7a.apk || true
+          ls -la *.apk 2>/dev/null || echo "Checking build outputs..."
+          find tv/build/outputs -name "*.apk" 2>/dev/null || true
+          find phone/build/outputs -name "*.apk" 2>/dev/null || true
+
+      - name: Upload TV APK (debug)
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkbridge-tv-debug
+          path: tv/build/outputs/apk/debug/*.apk
+
+      - name: Upload Phone APK (debug)
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkbridge-phone-debug
+          path: phone/build/outputs/apk/debug/*.apk
+
+      - name: Upload TV APK (release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkbridge-tv-release
+          path: tv/build/outputs/apk/release/*.apk
+
+      - name: Upload Phone APK (release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkbridge-phone-release
+          path: phone/build/outputs/apk/release/*.apk
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            linkbridge-tv-armeabi-v7a.apk
+            linkbridge-phone-armeabi-v7a.apk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="12dp"
+    android:background="@drawable/bg_history_row"
+    android:focusable="true"
+    android:clickable="true"
+    android:descendantFocusability="afterDescendants">
+
+    <!-- Checkbox for bulk select -->
+    <CheckBox
+        android:id="@+id/cbSelect"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="gone"
+        android:buttonTint="@color/accent" />
+
+    <!-- Copy button -->
+    <ImageButton
+        android:id="@+id/btnCopy"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_copy"
+        android:contentDescription="Copy to clipboard"
+        android:background="@drawable/bg_icon_button"
+        android:padding="8dp"
+        android:focusable="true"
+        android:nextFocusRight="@id/tvLinkText" />
+
+    <!-- Category Chip -->
+    <TextView
+        android:id="@+id/tvCategoryChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_chip"
+        android:textColor="@color/bg_dark"
+        android:focusable="false" />
+
+    <!-- Link text (clickable to re-trigger Open With) -->
+    <TextView
+        android:id="@+id/tvLinkText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="@drawable/bg_text_focusable"
+        android:padding="6dp"
+        android:nextFocusRight="@id/btnFavorite"
+        android:nextFocusLeft="@id/btnCopy" />
+
+    <!-- Favorite (star) button -->
+    <ImageButton
+        android:id="@+id/btnFavorite"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_star_off"
+        android:contentDescription="Toggle favorite"
+        android:background="@drawable/bg_icon_button"
+        android:padding="8dp"
+        android:focusable="true"
+        android:nextFocusRight="@id/btnOpen"
+        android:nextFocusLeft="@id/tvLinkText" />
+
+    <!-- Open button -->
+    <ImageButton
+        android:id="@+id/btnOpen"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_open"
+        android:contentDescription="Open with"
+        android:background="@drawable/bg_icon_button"
+        android:padding="8dp"
+        android:focusable="true"
+        android:nextFocusLeft="@id/btnFavorite" />
+
+    <!-- Delete button -->
+    <ImageButton
+        android:id="@+id/btnDelete"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_delete"
+        android:contentDescription="Delete"
+        android:background="@drawable/bg_icon_button_danger"
+        android:padding="8dp"
+        android:focusable="true"
+        android:nextFocusLeft="@id/btnOpen" />
+
+</LinearLayout>
