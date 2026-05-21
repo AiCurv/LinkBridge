@@ -32,7 +32,7 @@ class LinkBridgeHttpServer(
 
         return when {
             uri == Protocol.PATH_RECEIVE && session.method == Method.POST -> handleReceive(session)
-            uri == Protocol.PING -> newFixedLengthResponse(Response.Status.OK, MIME_PLAINTEXT, "pong")
+            uri == Protocol.PATH_PING -> newFixedLengthResponse(Response.Status.OK, MIME_PLAINTEXT, "pong")
             else -> newFixedLengthResponse(Response.Status.NOT_FOUND, MIME_PLAINTEXT, "Not Found")
         }
     }
